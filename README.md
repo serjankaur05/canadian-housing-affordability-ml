@@ -1,5 +1,7 @@
 # Canadian Housing Affordability | Machine Learning & Predictive Analytics
 
+[![tests](https://github.com/serjankaur05/canadian-housing-affordability-ml/actions/workflows/tests.yml/badge.svg)](https://github.com/serjankaur05/canadian-housing-affordability-ml/actions/workflows/tests.yml)
+
 **Using machine learning and explainable AI to understand housing affordability challenges across Canada.**
 
 `Python` `Scikit-Learn` `XGBoost` `K-Means` `SHAP` `Pandas` `NumPy`
@@ -49,6 +51,24 @@ The complete analytical results are documented in the research paper below. The 
 
 **Data availability:** The original Environics Analytics datasets are excluded from this public repository due to academic data-use restrictions.
 
+
+## Tests
+
+The modules in `src/` are covered by a pytest suite in `tests/`, run automatically by GitHub Actions on every push and pull request (Python 3.11 and 3.12). The tests use small synthetic data, so they run without the restricted Environics files.
+
+They check that:
+
+- the burden target is built correctly, including areas sitting exactly on the 0.30 stress line;
+- merging keeps only areas present in both datasets, and helpers never modify their inputs;
+- the classifier and K-Means give identical results across runs with the same seed;
+- the models recover known structure in synthetic data.
+
+Run them locally:
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
 
 ## Collaborators
 
